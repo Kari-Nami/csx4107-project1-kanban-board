@@ -8,7 +8,9 @@ function Navbar() {
 
   return (
     <div className='nav-bar'>
-      <h1>Project 1</h1>
+
+      <h1>Kanban Board</h1>
+
       <button onClick={() => navigate('/')} >
         <HomeIcon/>
       </button>

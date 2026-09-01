@@ -1,6 +1,5 @@
 .nav-bar {
     width: 100%;
-    box-sizing: border-box;
     padding: 1rem;
 
     display: flex;
@@ -8,5 +7,5 @@
     align-items: center;
     justify-content: space-between;
 
-    background-color: yellow;
+    background-color: #0059ff;
 }
