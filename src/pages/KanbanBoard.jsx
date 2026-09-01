@@ -1,9 +1,9 @@
 import React from 'react';
 
-function App(props) {
+function KanbanBoard(props) {
   return (
     <div></div>
   );
 }
 
-export default App;
+export default KanbanBoard;
