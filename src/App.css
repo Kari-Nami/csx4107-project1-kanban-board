@@ -1,5 +1,12 @@
 .nav-bar {
     width: 100%;
+    box-sizing: border-box;
     padding: 1rem;
-    background-color: blue;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: yellow;
 }
