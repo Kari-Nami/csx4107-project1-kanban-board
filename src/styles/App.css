@@ -9,3 +9,23 @@
 
     background-color: #0059ff;
 }
+
+.task {
+    outline: black 1px solid;
+    width: -webkit-fill-available;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+}
+
+.task-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.category-tag {
+    background-color: #0059ff;
+    padding: 0.2rem 1rem;
+    border-radius: 2rem;
+    align-content: center;
+}
