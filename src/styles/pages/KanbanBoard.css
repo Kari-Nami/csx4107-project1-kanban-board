@@ -1,5 +1,6 @@
 .page-container {
     justify-items: center;
+
 }
 
 .board {
@@ -25,7 +26,9 @@
 }
 
 .column-name {
-    background-color: #0059ff;
+    background-color: var(--primary-blue-bg);
     padding: 0.2rem 1.5rem;
     border-radius: 5rem;
+
+    color: var(--white-text);
 }

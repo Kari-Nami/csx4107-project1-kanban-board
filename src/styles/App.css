@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: space-between;
 
-    background-color: #0059ff;
+    background-color: var(--primary-blue-bg);
 }
 
 .task {
@@ -24,7 +24,8 @@
 }
 
 .category-tag {
-    background-color: #0059ff;
+    background-color: var(--primary-blue-bg);
+    color: var(--white-text);
     padding: 0.2rem 1rem;
     border-radius: 2rem;
     align-content: center;
@@ -44,7 +45,7 @@
 }
 
 .category-tag {
-    background-color: #0059ff;
+    background-color: var(--primary-blue-bg);
     padding: 0.2rem 1rem;
     border-radius: 2rem;
     align-content: center;
