@@ -5,11 +5,20 @@ import Task from "../components/task.jsx";
 import {useTasks} from "../context/TaskContext.jsx";
 import {useDroppable, useDragDropMonitor} from "@dnd-kit/react";
 import {Dialog, DialogTitle} from "@mui/material";
+import {useParams, useSearchParams} from "react-router-dom";
 
 function KanbanBoard() {
 
   const { tasks, addTask, moveTask } = useTasks()
-  const [editOpen, setEditOpen] = useState(false)
+
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const idToEdit = searchParams.get('edit')
+  const taskToEdit = tasks.find((task) => task.id === Number(idToEdit))
+
+  const openEditDialogue = (taskID) => {
+    setSearchParams({edit: taskID})
+  }
 
   const { ref: todoRef } = useDroppable({ id: "TO DO" })
   const { ref: doingRef } = useDroppable({ id: "DOING" })
@@ -36,7 +45,7 @@ function KanbanBoard() {
     <div className='page-container'>
       <Navbar/>
 
-      <Dialog open={editOpen}>
+      <Dialog open={Boolean(taskToEdit)}>
         <DialogTitle>test</DialogTitle>
       </Dialog>
 
@@ -49,7 +58,7 @@ function KanbanBoard() {
           {tasks.filter((task) => {
             return task.status === "TO DO"
           }).map((task) => {
-            return <Task key={task.id} details={task} setEditOpen={setEditOpen}/>
+            return <Task key={task.id} details={task} openEditDialogue={openEditDialogue}/>
           })}
 
         </div>
@@ -62,7 +71,7 @@ function KanbanBoard() {
           {tasks.filter((task) => {
             return task.status === "DOING"
           }).map((task) => {
-            return <Task key={task.id} details={task} setEditOpen={setEditOpen}/>
+            return <Task key={task.id} details={task} openEditDialogue={openEditDialogue}/>
           })}
 
         </div>
@@ -75,7 +84,7 @@ function KanbanBoard() {
           {tasks.filter((task) => {
             return task.status === "DONE"
           }).map((task) => {
-            return <Task key={task.id} details={task} setEditOpen={setEditOpen}/>
+            return <Task key={task.id} details={task} openEditDialogue={openEditDialogue}/>
           })}
         </div>
       </div>
