@@ -2,6 +2,7 @@ import React from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useTasks} from "../context/TaskContext.jsx";
+import {useDraggable} from "@dnd-kit/react";
 
 /* task structure:
     id: 1,
@@ -21,8 +22,12 @@ import {useTasks} from "../context/TaskContext.jsx";
 function Task({ details}) {
   const { editTask, deleteTask } = useTasks()
 
+  const { ref, isDragging } = useDraggable({
+    id: details.id
+  })
+
   return (
-    <div className='task'>
+    <div ref={ref} className={`task ${isDragging ? "task-dragging" : ""}`}>
       <div className='task-header'>
         <h3>{details.title}</h3>
         <div className='category-tag'>{details.category}</div>

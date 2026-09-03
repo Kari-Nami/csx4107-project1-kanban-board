@@ -38,6 +38,10 @@
     padding: 0.5rem;
 }
 
+.task-dragging {
+
+}
+
 .task-header {
     display: flex;
     flex-direction: row;

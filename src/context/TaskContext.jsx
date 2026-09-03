@@ -59,17 +59,17 @@ export function TaskProvider({children}) {
   }
 
   const editTask = (newTask) => {
-    setTasks(previous => {
-      previous.map(task => {
-        if (task.id === newTask.id) { return newTask }
-        else { return task }
-      })
-    })
+    setTasks(previous => previous.map(task => task.id === newTask.id ? newTask : task))
+  }
+
+  const moveTask = (taskID, newStatus) => {
+    setTasks(previous => previous.map(task => task.id === taskID ? {...task, status: newStatus} : task)
+    )
   }
 
   return (
     <TaskContext.Provider value={{
-      tasks, addTask, deleteTask, editTask
+      tasks, addTask, deleteTask, editTask, moveTask
     }} >
       {children}
     </TaskContext.Provider>
