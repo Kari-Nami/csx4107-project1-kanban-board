@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import KanbanBoard from "./pages/KanbanBoard.jsx";
 import {TaskProvider} from "./context/TaskContext.jsx";
 import {DragDropProvider} from "@dnd-kit/react";
+import EditTask from "./pages/EditTask.jsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Dashboard/>}/>
           <Route path='/board' element={<DragDropProvider><KanbanBoard/></DragDropProvider>}/>
+          <Route path='/tasks/:id' element={<EditTask/>}/>
         </Routes>
       </HashRouter>
     </TaskProvider>
