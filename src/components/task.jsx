@@ -1,4 +1,7 @@
 import React from 'react';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import {useTasks} from "../context/TaskContext.jsx";
 
 /* task structure:
     id: 1,
@@ -16,6 +19,8 @@ import React from 'react';
 */
 
 function Task({ details}) {
+  const { editTask, deleteTask } = useTasks()
+
   return (
     <div className='task' key={details.id}>
       <div className='task-header'>
@@ -25,6 +30,12 @@ function Task({ details}) {
       <div>{details.description}</div>
       <div>{details.endDate}</div>
       <div>{details.responsible.name}</div>
+      <button onClick={() => deleteTask(details.id)}>
+        <DeleteIcon/>
+      </button>
+      <button disabled onClick={() => editTask({})}>
+        <EditIcon/>
+      </button>
     </div>
   );
 }
