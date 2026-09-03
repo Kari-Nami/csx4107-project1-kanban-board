@@ -47,6 +47,8 @@ function KanbanBoard() {
           })}
         </div>
       </div>
+      {/*title, description, category, endDate, responsible*/}
+      <button onClick={() => addTask("test", "descrpition", "cat", "12/12/12", {id: 1, name: "test"})}>Add task</button>
     </div>
   );
 }
