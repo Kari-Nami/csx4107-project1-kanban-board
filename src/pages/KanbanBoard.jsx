@@ -6,6 +6,7 @@ import {useTasks} from "../context/TaskContext.jsx";
 import {useDroppable, useDragDropMonitor} from "@dnd-kit/react";
 import {Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
 import {useParams, useSearchParams} from "react-router-dom";
+import EditDialogue from "../components/EditDialogue.jsx";
 
 function KanbanBoard() {
 
@@ -37,27 +38,11 @@ function KanbanBoard() {
     }
   })
 
-  const handleEditSubmit = () => {
-    console.log('edit form submitted')
-    setSearchParams({})
-  }
 
   return (
     <div className='page-container'>
       <Navbar/>
-
-      <Dialog open={Boolean(taskToEdit)}>
-        <DialogTitle>test</DialogTitle>
-        <DialogContent>
-          <form id='edit-form' onSubmit={handleEditSubmit}>
-
-          </form>
-        </DialogContent>
-        <DialogActions>
-          <button onClick={() => setSearchParams({})}>Cancel</button>
-          <button type={"submit"} form='edit-form'>Save</button>
-        </DialogActions>
-      </Dialog>
+      {taskToEdit && <EditDialogue task={taskToEdit} setSearchParams={setSearchParams}/>}
 
       <div className='board'>
         <div ref={todoRef} className='column'>
