@@ -22,6 +22,9 @@ function Task({ details}) {
         <h3>{details.title}</h3>
         <div className='category-tag'>{details.category}</div>
       </div>
+      <div>{details.description}</div>
+      <div>{details.endDate}</div>
+      <div>{details.responsible.name}</div>
     </div>
   );
 }
