@@ -19,7 +19,7 @@ import {useDraggable} from "@dnd-kit/react";
     status: "TO DO"
 */
 
-function Task({ details}) {
+function Task({ details, setEditOpen }) {
   const { editTask, deleteTask } = useTasks()
 
   const { ref, isDragging } = useDraggable({
@@ -38,7 +38,7 @@ function Task({ details}) {
       <button onClick={() => deleteTask(details.id)}>
         <DeleteIcon/>
       </button>
-      <button disabled onClick={() => editTask({})}>
+      <button onClick={() => setEditOpen(true)}>
         <EditIcon/>
       </button>
     </div>
