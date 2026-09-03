@@ -25,7 +25,7 @@ function KanbanBoard() {
           {tasks.filter((task) => {
             return task.status === "TO DO"
           }).map((task) => {
-            return <Task details={task}/>
+            return <Task key={task.id} details={task}/>
           })}
 
         </div>
@@ -37,7 +37,7 @@ function KanbanBoard() {
           {tasks.filter((task) => {
             return task.status === "DOING"
           }).map((task) => {
-            return <Task details={task} />
+            return <Task key={task.id} details={task} />
           })}
 
         </div>
@@ -46,8 +46,10 @@ function KanbanBoard() {
             <h2>DONE</h2>
           </div>
 
-          {tasks.map((task) => {
-            return <Task details={task} />
+          {tasks.filter((task) => {
+            return task.status === "DONE"
+          }).map((task) => {
+            return <Task key={task.id} details={task} />
           })}
         </div>
       </div>

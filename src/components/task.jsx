@@ -22,7 +22,7 @@ function Task({ details}) {
   const { editTask, deleteTask } = useTasks()
 
   return (
-    <div className='task' key={details.id}>
+    <div className='task'>
       <div className='task-header'>
         <h3>{details.title}</h3>
         <div className='category-tag'>{details.category}</div>
