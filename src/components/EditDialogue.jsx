@@ -77,8 +77,8 @@ function EditDialogue({ task, setSearchParams }) {
             </FormControl>
 
             <DatePicker
-              label="End Date" slotProps={{ textField: { margin: 'dense', variant: 'outlined', size: 'small' } }}
-              value={dayjs(endDate)} onChange={(newDate) => setEndDate(newDate ? newDate.format('DD/MM/YYYY') : '')}
+              label="End Date" format='DD/MM/YYYY' slotProps={{ textField: { margin: 'dense', variant: 'outlined', size: 'small' } }}
+              value={dayjs(endDate, 'DD/MM/YYYY')} onChange={(newDate) => setEndDate(newDate ? newDate.format('DD/MM/YYYY') : '')}
             />
           </Box>
         </form>

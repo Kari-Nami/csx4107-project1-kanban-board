@@ -20,6 +20,10 @@ function CreateTaskDialogue({ createTaskOpen, setCreateTaskOpen }) {
 
   const handleCreateSubmit = () => {
 
+    if (!title.trim() || !endDate || !responsibleName || !responsibleId || !category) {
+      return
+    }
+
     addTask(
       title,
       description,
@@ -36,49 +40,49 @@ function CreateTaskDialogue({ createTaskOpen, setCreateTaskOpen }) {
         <DialogTitle>New Task</DialogTitle>
         <DialogContent>
           <form  id='edit-form' onSubmit={handleCreateSubmit}>
-          <TextField margin='dense' variant='outlined' size='small' label='Title' fullWidth
-                     value={title} onChange={(e) => setTitle(e.target.value)}
-          />
-
-          <TextField margin='dense' variant='outlined' size='small' label='Description' fullWidth multiline rows={3}
-                     value={description} onChange={(e) => setDescription(e.target.value)}
-          />
-
-          <Box className='responsible-inputs-container'>
-            <TextField margin='dense' variant='outlined' size='small' label='Responsible Name'
-                       value={responsibleName} onChange={(e) => setResponsibleName(e.target.value)}
+            <TextField margin='dense' variant='outlined' size='small' label='Title' fullWidth
+                       value={title} onChange={(e) => setTitle(e.target.value)}
             />
-            <TextField margin='dense' variant='outlined' size='small' label='Responsible ID' type='number'
-                       value={responsibleId} onChange={(e) => setResponsibleId(Number(e.target.value))}
+
+            <TextField margin='dense' variant='outlined' size='small' label='Description' fullWidth multiline rows={3}
+                       value={description} onChange={(e) => setDescription(e.target.value)}
             />
-          </Box>
 
-          <Box className='form-row-container'>
-            <FormControl margin='dense'>
-              <InputLabel>Category</InputLabel>
-              <Select id='select-category' variant='outlined' size='small' label='Category'
-                      value={category} onChange={(e) => setCategory(e.target.value)}
-              >
-                {categories.map((categoryChoice) => {
-                  return (
-                    <MenuItem value={categoryChoice.id} >{categoryChoice.name}</MenuItem>
-                  )
-                })}
-              </Select>
-            </FormControl>
+            <Box className='responsible-inputs-container'>
+              <TextField margin='dense' variant='outlined' size='small' label='Responsible Name'
+                         value={responsibleName} onChange={(e) => setResponsibleName(e.target.value)}
+              />
+              <TextField margin='dense' variant='outlined' size='small' label='Responsible ID' type='number'
+                         value={responsibleId} onChange={(e) => setResponsibleId(Number(e.target.value))}
+              />
+            </Box>
 
-            <DatePicker
-              label="End Date" slotProps={{ textField: { margin: 'dense', variant: 'outlined', size: 'small' } }}
-              value={dayjs(endDate)} onChange={(newDate) => setEndDate(newDate ? newDate.format('DD/MM/YYYY') : '')}
-            />
-          </Box>
-        </form>
-      </DialogContent>
+            <Box className='form-row-container'>
+              <FormControl margin='dense'>
+                <InputLabel>Category</InputLabel>
+                <Select id='select-category' variant='outlined' size='small' label='Category'
+                        value={category} onChange={(e) => setCategory(e.target.value)}
+                >
+                  {categories.map((categoryChoice) => {
+                    return (
+                      <MenuItem value={categoryChoice.id} >{categoryChoice.name}</MenuItem>
+                    )
+                  })}
+                </Select>
+              </FormControl>
 
-      <DialogActions>
-        <button className='secondary-button' onClick={() => setCreateTaskOpen(false)}>Cancel</button>
-        <button className='primary-button' type={"submit"} form='edit-form'>Save</button>
-      </DialogActions>
+              <DatePicker
+                label="End Date" format='DD/MM/YYYY' slotProps={{textField: { margin: 'dense', variant: 'outlined', size: 'small' }}}
+                value={dayjs(endDate, 'DD/MM/YYYY')} onChange={(newDate) => setEndDate(newDate ? newDate.format('DD/MM/YYYY') : '')}
+              />
+            </Box>
+          </form>
+        </DialogContent>
+
+        <DialogActions>
+          <button className='secondary-button' onClick={() => setCreateTaskOpen(false)}>Cancel</button>
+          <button className='primary-button' type={"submit"} form='edit-form'>Save</button>
+        </DialogActions>
       </Dialog>
     </LocalizationProvider>
   );
