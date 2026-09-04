@@ -12,7 +12,7 @@ export function TaskProvider({children}) {
         name: "Kate"
       },
       description: "this is a test task",
-      category: "food",
+      category: {id: 1, name: "food"},
       startDate: "01/09/2026",
       endDate: "03/09/2026",
       completeDate: null,
@@ -26,7 +26,7 @@ export function TaskProvider({children}) {
         name: "Crow"
       },
       description: "this is a test task",
-      category: "class",
+      category: {id: 2, name: "class"},
       startDate: "02/09/2026",
       endDate: "07/09/2026",
       completeDate: null,

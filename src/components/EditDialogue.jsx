@@ -1,13 +1,25 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Dialog, DialogActions, DialogContent, DialogTitle, TextField} from "@mui/material";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField
+} from "@mui/material";
 import {useTasks} from "../context/TaskContext.jsx";
+import {useCategories} from "../context/CategoryContext.jsx";
 
 function EditDialogue({ task, setSearchParams }) {
   const { editTask } = useTasks()
+  const { categories } = useCategories()
 
   const [title, setTitle] = useState(task.title)
   const [description, setDescription] = useState(task.description)
-  const [category, setCategory] = useState(task.category)
+  const [category, setCategory] = useState(task.category.id)
   const [responsible, setResponsible] = useState(task.responsible)
   const [endDate, setEndDate] = useState(task.endDate)
 
@@ -21,7 +33,7 @@ function EditDialogue({ task, setSearchParams }) {
         name: "Crow"
       },
       description: description,
-      category: category,
+      category: categories.find((categoryChoice) => categoryChoice.id === category),
       startDate: task.startDate,
       endDate: endDate,
       completeDate: task.completeDate,
@@ -39,7 +51,17 @@ function EditDialogue({ task, setSearchParams }) {
         <form id='edit-form' onSubmit={handleEditSubmit}>
           <TextField margin='dense' variant='outlined' size='small' label='Title' value={title} onChange={(e) => setTitle(e.target.value)}/>
           <TextField margin='dense' variant='outlined' size='small' label='Description' value={description} onChange={(e) => setDescription(e.target.value)}/>
-          <input type="text" value={category} onChange={(e) => setCategory(e.target.value)}/>
+
+          <FormControl margin='dense' fullWidth>
+            <InputLabel>Category</InputLabel>
+            <Select id='select-category' variant='outlined' size='small' label='Category' value={category} onChange={(e) => setCategory(e.target.value)}>
+              {categories.map((categoryChoice) => {
+                return (
+                  <MenuItem value={categoryChoice.id} >{categoryChoice.name}</MenuItem>
+                )
+              })}
+            </Select>
+          </FormControl>
           <input type="text" value={responsible} onChange={(e) => setResponsible(e.target.value)}/>
           <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
         </form>

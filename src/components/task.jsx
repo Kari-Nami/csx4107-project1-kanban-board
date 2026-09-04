@@ -30,9 +30,10 @@ function Task({ details, openEditDialogue }) {
     <div ref={ref} className={`task ${isDragging ? "task-dragging" : ""}`}>
       <div className='task-header'>
         <h3>{details.title}</h3>
-        <div className='category-tag'>{details.category}</div>
+        <div className='category-tag'>{details.category.name}</div>
       </div>
       <div>{details.description}</div>
+      <div>{details.startDate}</div>
       <div>{details.endDate}</div>
       <div>{details.responsible.name}</div>
       <button onClick={() => deleteTask(details.id)}>
