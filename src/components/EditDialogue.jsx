@@ -16,6 +16,7 @@ function EditDialogue({ task, setSearchParams }) {
   const [category, setCategory] = useState(task.category.id)
   const [responsibleName, setResponsibleName] = useState(task.responsible.name)
   const [responsibleId, setResponsibleId] = useState(task.responsible.id)
+  const [startDate, setStartDate] = useState(task.startDate)
   const [endDate, setEndDate] = useState(task.endDate)
 
   const handleEditSubmit = () => {
@@ -29,7 +30,7 @@ function EditDialogue({ task, setSearchParams }) {
       },
       description: description,
       category: categories.find((categoryChoice) => categoryChoice.id === category),
-      startDate: task.startDate,
+      startDate: startDate,
       endDate: endDate,
       completeDate: task.completeDate,
       status: task.status
@@ -75,6 +76,11 @@ function EditDialogue({ task, setSearchParams }) {
                 })}
               </Select>
             </FormControl>
+
+            <DatePicker
+              label="Start Date" format='DD/MM/YYYY' slotProps={{ textField: { margin: 'dense', variant: 'outlined', size: 'small' } }}
+              value={dayjs(startDate, 'DD/MM/YYYY')} onChange={(newDate) => setStartDate(newDate ? newDate.format('DD/MM/YYYY') : '')}
+            />
 
             <DatePicker
               label="End Date" format='DD/MM/YYYY' slotProps={{ textField: { margin: 'dense', variant: 'outlined', size: 'small' } }}

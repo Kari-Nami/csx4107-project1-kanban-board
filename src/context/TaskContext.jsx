@@ -34,7 +34,7 @@ export function TaskProvider({children}) {
     }
   ])
 
-  const addTask = (title, description, category, endDate, responsible) => {
+  const addTask = (title, description, category, startDate, endDate, responsible) => {
     const now = new Date()
 
     const newTask = {
@@ -43,7 +43,7 @@ export function TaskProvider({children}) {
       responsible: responsible,
       description: description,
       category: category,
-      startDate: now.getDate(),
+      startDate: startDate,
       endDate: endDate,
       completeDate: null,
       status: "TO DO"

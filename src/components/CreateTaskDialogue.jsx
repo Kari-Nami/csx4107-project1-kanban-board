@@ -16,11 +16,12 @@ function CreateTaskDialogue({ createTaskOpen, setCreateTaskOpen }) {
   const [category, setCategory] = useState('')
   const [responsibleName, setResponsibleName] = useState('')
   const [responsibleId, setResponsibleId] = useState('')
+  const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
 
   const handleCreateSubmit = () => {
 
-    if (!title.trim() || !endDate || !responsibleName || !responsibleId || !category) {
+    if (!title.trim() || !startDate || !endDate || !responsibleName || !responsibleId || !category) {
       return
     }
 
@@ -28,6 +29,7 @@ function CreateTaskDialogue({ createTaskOpen, setCreateTaskOpen }) {
       title,
       description,
       categories.find((categoryChoice) => categoryChoice.id === category),
+      startDate,
       endDate,
       { id: responsibleId, name: responsibleName }
     )
@@ -70,6 +72,11 @@ function CreateTaskDialogue({ createTaskOpen, setCreateTaskOpen }) {
                   })}
                 </Select>
               </FormControl>
+
+              <DatePicker
+                label="Start Date" format='DD/MM/YYYY' slotProps={{textField: { margin: 'dense', variant: 'outlined', size: 'small' }}}
+                value={dayjs(startDate, 'DD/MM/YYYY')} onChange={(newDate) => setStartDate(newDate ? newDate.format('DD/MM/YYYY') : '')}
+              />
 
               <DatePicker
                 label="End Date" format='DD/MM/YYYY' slotProps={{textField: { margin: 'dense', variant: 'outlined', size: 'small' }}}
