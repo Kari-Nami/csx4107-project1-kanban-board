@@ -11,7 +11,7 @@ function Navbar() {
 
       <h1>Kanban Board</h1>
 
-      <button onClick={() => navigate('/')} >
+      <button className='primary-button' onClick={() => navigate('/')} >
         <HomeIcon/>
       </button>
     </div>

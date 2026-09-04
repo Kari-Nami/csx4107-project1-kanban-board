@@ -1,7 +1,11 @@
 :root {
-    --white-text: #eaeaea;
-    --primary-blue-bg: #0a1bd8;
 
+    --primary-colour: #0a1bd8;
+    --seconday-colour: #d5d5d5;
+    --dark-font: #000;
+    --light-font: #fff;
+
+    --task-bg-colour: #fff;
 }
 
 * {
@@ -12,5 +16,21 @@
 }
 
 h1 {
-    color: var(--white-text);
+    color: var(--light-font);
+}
+
+.primary-button, .secondary-button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 5rem;
+}
+
+.primary-button {
+    background-color: var(--primary-colour);
+    color: var(--light-font);
+}
+
+.secondary-button {
+    background-color: var(--seconday-colour);
+    color: var(--dark-font);
 }

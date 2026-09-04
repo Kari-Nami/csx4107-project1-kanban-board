@@ -36,10 +36,10 @@ function Task({ details, openEditDialogue }) {
       <div>{details.startDate}</div>
       <div>{details.endDate}</div>
       <div>{details.responsible.name}</div>
-      <button onClick={() => deleteTask(details.id)}>
+      <button className='primary-button' onClick={() => deleteTask(details.id)}>
         <DeleteIcon/>
       </button>
-      <button onClick={() => openEditDialogue(details.id)}>
+      <button className='secondary-button' onClick={() => openEditDialogue(details.id)}>
         <EditIcon/>
       </button>
     </div>

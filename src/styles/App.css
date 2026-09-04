@@ -7,35 +7,18 @@
     align-items: center;
     justify-content: space-between;
 
-    background-color: var(--primary-blue-bg);
+    background-color: var(--primary-colour);
 }
 
 .task {
     outline: black 1px solid;
+    background-color: var(--task-bg-colour);
     width: -webkit-fill-available;
     margin-top: 0.5rem;
     padding: 0.5rem;
 }
-
-.task-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.category-tag {
-    background-color: var(--primary-blue-bg);
-    color: var(--white-text);
-    padding: 0.2rem 1rem;
-    border-radius: 2rem;
-    align-content: center;
-}
-
-.task {
-    outline: black 1px solid;
-    width: -webkit-fill-available;
-    margin-top: 0.5rem;
-    padding: 0.5rem;
+.task:hover {
+    cursor: grab;
 }
 
 .task-dragging {
@@ -49,7 +32,8 @@
 }
 
 .category-tag {
-    background-color: var(--primary-blue-bg);
+    background-color: var(--primary-colour);
+    color: var(--light-font);
     padding: 0.2rem 1rem;
     border-radius: 2rem;
     align-content: center;

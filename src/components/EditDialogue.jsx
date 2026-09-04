@@ -68,9 +68,10 @@ function EditDialogue({ task, setSearchParams }) {
           <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
         </form>
       </DialogContent>
+
       <DialogActions>
-        <button onClick={() => setSearchParams({})}>Cancel</button>
-        <button type={"submit"} form='edit-form'>Save</button>
+        <button className='secondary-button' onClick={() => setSearchParams({})}>Cancel</button>
+        <button className='primary-button' type={"submit"} form='edit-form'>Save</button>
       </DialogActions>
     </Dialog>
   );
