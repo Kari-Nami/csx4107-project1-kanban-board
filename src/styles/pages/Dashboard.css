@@ -1,0 +1,22 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--light-font);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.page-container > button {
+    padding: 0.75rem 2rem;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 2rem;
+    transition: transform 0.1s ease;
+}
+
+.page-container > button:active {
+    transform: scale(0.98);
+}

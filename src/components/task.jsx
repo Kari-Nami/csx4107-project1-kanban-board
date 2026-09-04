@@ -33,15 +33,19 @@ function Task({ details, openEditDialogue }) {
         <div className='category-tag'>{details.category.name}</div>
       </div>
       <div>{details.description}</div>
-      <div>{details.startDate}</div>
-      <div>{details.endDate}</div>
       <div>{details.responsible.name}</div>
-      <button className='primary-button' onClick={() => deleteTask(details.id)}>
-        <DeleteIcon/>
-      </button>
-      <button className='secondary-button' onClick={() => openEditDialogue(details.id)}>
-        <EditIcon/>
-      </button>
+      <div>
+        <div>{details.startDate}</div>
+        <div>{details.endDate}</div>
+      </div>
+      <div>
+        <button className='primary-button' onClick={() => deleteTask(details.id)}>
+          <DeleteIcon/>
+        </button>
+        <button className='secondary-button' onClick={() => openEditDialogue(details.id)}>
+          <EditIcon/>
+        </button>
+      </div>
     </div>
   );
 }

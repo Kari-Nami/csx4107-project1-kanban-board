@@ -1,28 +1,60 @@
 :root {
-
-    --primary-colour: #0a1bd8;
-    --seconday-colour: #d5d5d5;
-    --dark-font: #000;
-    --light-font: #fff;
-
-    --task-bg-colour: #fff;
+    /* Retro-minimalist color palette */
+    --primary-colour: #3d3d3d;
+    --secondary-colour: #e8e8e8;
+    --accent-colour: #d9534f;
+    --dark-font: #2a2a2a;
+    --light-font: #f5f5f5;
+    --task-bg-colour: #fafafa;
+    --border-colour: #c0c0c0;
+    --hover-colour: #f0f0f0;
+    
+    /* Typography */
+    --font-family: sans-serif;
+    --font-size-base: 14px;
+    --font-size-lg: 16px;
+    --font-size-xl: 18px;
 }
 
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: var(--font-family);
+}
 
+html, body, #root {
+    height: 100%;
+    background-color: var(--light-font);
+    color: var(--dark-font);
+}
+
+h1, h2, h3 {
+    font-weight: 600;
 }
 
 h1 {
     color: var(--light-font);
+    font-size: var(--font-size-xl);
+}
+
+h2 {
+    font-size: var(--font-size-lg);
+}
+
+h3 {
+    font-size: var(--font-size-lg);
 }
 
 .primary-button, .secondary-button {
-    padding: 0.5rem 1.5rem;
-    border: none;
-    border-radius: 5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-colour);
+    border-radius: 0;
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.1s ease;
 }
 
 .primary-button {
@@ -30,7 +62,17 @@ h1 {
     color: var(--light-font);
 }
 
+.primary-button:hover {
+    background-color: var(--accent-colour);
+    border-color: var(--accent-colour);
+}
+
 .secondary-button {
-    background-color: var(--seconday-colour);
+    background-color: var(--secondary-colour);
     color: var(--dark-font);
+}
+
+.secondary-button:hover {
+    background-color: var(--hover-colour);
+    border-color: var(--dark-font);
 }

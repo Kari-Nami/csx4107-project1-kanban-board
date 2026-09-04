@@ -1,42 +1,120 @@
 .nav-bar {
     width: 100%;
-    padding: 1rem;
-
+    padding: 1rem 1.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
     background-color: var(--primary-colour);
+    border-bottom: 3px solid var(--accent-colour);
+}
+
+.nav-bar h1 {
 }
 
 .task {
-    outline: black 1px solid;
+    border: 2px solid var(--border-colour);
     background-color: var(--task-bg-colour);
     width: -webkit-fill-available;
     margin-top: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.75rem;
+    transition: all 0.2s ease;
 }
+
 .task:hover {
     cursor: grab;
+    border-color: var(--primary-colour);
+    background-color: var(--hover-colour);
+    box-shadow: 2px 2px 0 var(--border-colour);
 }
 
 .task-dragging {
+    opacity: 0.5;
+    border-color: var(--accent-colour);
+}
 
+.task h3 {
+    margin-bottom: 0.5rem;
+}
+
+.task > div {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+}
+
+/* Date container - displays start and end dates on one line */
+.task > div:nth-child(4) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Responsible person - styled as a tag with label */
+.task > div:nth-child(3) {
+    display: inline-block;
+    background-color: var(--secondary-colour);
+    color: var(--dark-font);
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--border-colour);
+    border-radius: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.task > div:nth-child(3)::before {
+    content: 'Responsible: ';
+    font-weight: 600;
+}
+
+/* Start date - left side with text indicator */
+.task > div:nth-child(4) > div:first-child::before {
+    content: 'Start: ';
+    color: var(--primary-colour);
+    font-weight: 600;
+}
+
+/* End date - right side with text indicator */
+.task > div:nth-child(4) > div:last-child::before {
+    content: 'End: ';
+    color: var(--accent-colour);
+    font-weight: 600;
 }
 
 .task-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .category-tag {
     background-color: var(--primary-colour);
     color: var(--light-font);
-    padding: 0.2rem 1rem;
-    border-radius: 2rem;
-    align-content: center;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--primary-colour);
+    border-radius: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.task > div:last-child {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.task .primary-button, .task .secondary-button {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .responsible-inputs-container {
@@ -60,4 +138,85 @@
 .form-row-container .MuiFormControl-root {
     flex: 1;
     min-width: 0;
+}
+
+/* Material-UI Dialog styling */
+.MuiDialog-paper {
+    border: 2px solid var(--primary-colour) !important;
+    border-radius: 0 !important;
+    font-family: var(--font-family) !important;
+}
+
+.MuiDialogTitle-root {
+    font-family: var(--font-family) !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid var(--border-colour) !important;
+}
+
+.MuiDialogContent-root {
+    padding: 1.5rem !important;
+    font-family: var(--font-family) !important;
+}
+
+.MuiDialogActions-root {
+    border-top: 2px solid var(--border-colour) !important;
+    padding: 1rem !important;
+}
+
+.MuiTextField-root {
+    margin-bottom: 0.5rem !important;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root {
+    border-radius: 0 !important;
+    font-family: var(--font-family) !important;
+}
+
+.MuiOutlinedInput-root {
+    border-radius: 0 !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border-color: var(--border-colour) !important;
+    border-width: 2px !important;
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: var(--primary-colour) !important;
+}
+
+.MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
+    border-color: var(--accent-colour) !important;
+    border-width: 2px !important;
+}
+
+.MuiOutlinedInput-root.Mui-error:hover .MuiOutlinedInput-notchedOutline {
+    border-color: var(--accent-colour) !important;
+}
+
+.MuiFormControl-root.Mui-error .MuiOutlinedInput-notchedOutline {
+    border-color: var(--accent-colour) !important;
+    border-width: 2px !important;
+}
+
+.MuiFormControl-root.Mui-error:hover .MuiOutlinedInput-notchedOutline {
+    border-color: var(--accent-colour) !important;
+}
+
+.MuiInputBase-input {
+    font-family: var(--font-family) !important;
+    font-size: var(--font-size-base) !important;
+}
+
+.MuiFormLabel-root {
+    font-family: var(--font-family) !important;
+    font-size: var(--font-size-base) !important;
+}
+
+.MuiSelect-select {
+    border-radius: 0 !important;
+}
+
+.MuiMenuItem-root {
+    font-family: var(--font-family) !important;
 }
