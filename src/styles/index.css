@@ -1,10 +1,10 @@
 :root {
     /* Retro-minimalist color palette */
-    --primary-colour: #3d3d3d;
-    --secondary-colour: #e8e8e8;
-    --accent-colour: #d9534f;
+    --primary-colour: #0110cf;
+    --secondary-colour: #9d9d9d;
+    --accent-colour: #5c6f6b;
     --dark-font: #2a2a2a;
-    --light-font: #f5f5f5;
+    --light-font: #c1c1c4;
     --task-bg-colour: #fafafa;
     --border-colour: #c0c0c0;
     --hover-colour: #f0f0f0;
