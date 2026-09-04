@@ -4,13 +4,14 @@ import Navbar from "../components/Navbar.jsx";
 import Task from "../components/task.jsx";
 import {useTasks} from "../context/TaskContext.jsx";
 import {useDroppable, useDragDropMonitor} from "@dnd-kit/react";
-import {Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
-import {useParams, useSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 import EditDialogue from "../components/EditDialogue.jsx";
+import CreateTaskDialogue from "../components/CreateTaskDialogue.jsx";
 
 function KanbanBoard() {
   const { tasks, addTask, moveTask, editTask } = useTasks()
 
+  const [createTaskOpen, setCreateTaskOpen] = useState(false)
   const [searchParams, setSearchParams] = useSearchParams()
 
   const idToEdit = searchParams.get('edit')
@@ -42,6 +43,7 @@ function KanbanBoard() {
     <div className='page-container'>
       <Navbar/>
       {taskToEdit && <EditDialogue task={taskToEdit} setSearchParams={setSearchParams}/>}
+      <CreateTaskDialogue createTaskOpen={createTaskOpen} setCreateTaskOpen={setCreateTaskOpen} setSearchParams={setSearchParams} />
 
       <div className='board'>
         <div ref={todoRef} className='column'>
@@ -83,7 +85,7 @@ function KanbanBoard() {
         </div>
       </div>
       
-      <button onClick={() => addTask("test", "descrpition", "cat", "12/12/12", {id: 1, name: "test"})}>Add task</button>
+      <button onClick={() => setCreateTaskOpen(true)}>Add task</button>
     </div>
   );
 }
