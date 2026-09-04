@@ -45,6 +45,13 @@ function loadTasks() {
   }
 }
 
+// formats a date as "DD/MM/YYYY" like the rest of the app
+function formatDate(date) {
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  return `${day}/${month}/${date.getFullYear()}`
+}
+
 export function TaskProvider({children}) {
   const [tasks, setTasks] = useState(loadTasks)
 
@@ -81,8 +88,16 @@ export function TaskProvider({children}) {
   }
 
   const moveTask = (taskID, newStatus) => {
-    setTasks(previous => previous.map(task => task.id === taskID ? {...task, status: newStatus} : task)
-    )
+    setTasks(previous => previous.map(task => {
+      if (task.id !== taskID) return task
+
+      // set the complete date when the task is moved to DONE, clear it when it is moved back out
+      if (newStatus === "DONE") {
+        return {...task, status: newStatus, completeDate: formatDate(new Date())}
+      }
+
+      return {...task, status: newStatus, completeDate: null}
+    }))
   }
 
   return (
