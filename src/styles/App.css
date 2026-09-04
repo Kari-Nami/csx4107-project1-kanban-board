@@ -49,3 +49,15 @@
     flex: 1;
     min-width: 0;
 }
+
+.form-row-container {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.form-row-container .MuiTextField-root,
+.form-row-container .MuiFormControl-root {
+    flex: 1;
+    min-width: 0;
+}
