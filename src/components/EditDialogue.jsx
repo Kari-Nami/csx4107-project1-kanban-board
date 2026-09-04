@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel, MenuItem, Select, TextField, Box } from "@mui/material";
 import {useTasks} from "../context/TaskContext.jsx";
 import {useCategories} from "../context/CategoryContext.jsx";
 
@@ -10,7 +10,8 @@ function EditDialogue({ task, setSearchParams }) {
   const [title, setTitle] = useState(task.title)
   const [description, setDescription] = useState(task.description)
   const [category, setCategory] = useState(task.category.id)
-  const [responsible, setResponsible] = useState(task.responsible)
+  const [responsibleName, setResponsibleName] = useState(task.responsible.name)
+  const [responsibleId, setResponsibleId] = useState(task.responsible.id)
   const [endDate, setEndDate] = useState(task.endDate)
 
   const handleEditSubmit = () => {
@@ -19,8 +20,8 @@ function EditDialogue({ task, setSearchParams }) {
       id: task.id,
       title: title,
       responsible: {
-        id: 45678,
-        name: "Crow"
+        id: responsibleId,
+        name: responsibleName
       },
       description: description,
       category: categories.find((categoryChoice) => categoryChoice.id === category),
@@ -60,9 +61,14 @@ function EditDialogue({ task, setSearchParams }) {
             </Select>
           </FormControl>
 
-          <TextField margin='dense' variant='outlined' size='small' label='Responsible Name'
-                     value={responsible.name} onChange={(e) => setResponsible(e.target.value)}
-          />
+          <Box className='responsible-inputs-container'>
+            <TextField margin='dense' variant='outlined' size='small' label='Responsible Name'
+                       value={responsibleName} onChange={(e) => setResponsibleName(e.target.value)}
+            />
+            <TextField margin='dense' variant='outlined' size='small' label='Responsible ID' type='number'
+                       value={responsibleId} onChange={(e) => setResponsibleId(Number(e.target.value))}
+            />
+          </Box>
 
 
           <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>

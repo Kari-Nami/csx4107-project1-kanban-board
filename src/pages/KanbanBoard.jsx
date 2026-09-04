@@ -9,7 +9,6 @@ import {useParams, useSearchParams} from "react-router-dom";
 import EditDialogue from "../components/EditDialogue.jsx";
 
 function KanbanBoard() {
-
   const { tasks, addTask, moveTask, editTask } = useTasks()
 
   const [searchParams, setSearchParams] = useSearchParams()

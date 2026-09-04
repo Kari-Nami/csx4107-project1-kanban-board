@@ -20,7 +20,7 @@ import {useDraggable} from "@dnd-kit/react";
 */
 
 function Task({ details, openEditDialogue }) {
-  const { editTask, deleteTask } = useTasks()
+  const { deleteTask } = useTasks()
 
   const { ref, isDragging } = useDraggable({
     id: details.id

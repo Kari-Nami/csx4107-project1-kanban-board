@@ -38,3 +38,14 @@
     border-radius: 2rem;
     align-content: center;
 }
+
+.responsible-inputs-container {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.responsible-inputs-container .MuiTextField-root {
+    flex: 1;
+    min-width: 0;
+}
