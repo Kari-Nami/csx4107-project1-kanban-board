@@ -1,15 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField
-} from "@mui/material";
+import { Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import {useTasks} from "../context/TaskContext.jsx";
 import {useCategories} from "../context/CategoryContext.jsx";
 
@@ -49,12 +39,19 @@ function EditDialogue({ task, setSearchParams }) {
       <DialogTitle>Edit {task.title}</DialogTitle>
       <DialogContent>
         <form id='edit-form' onSubmit={handleEditSubmit}>
-          <TextField margin='dense' variant='outlined' size='small' label='Title' value={title} onChange={(e) => setTitle(e.target.value)}/>
-          <TextField margin='dense' variant='outlined' size='small' label='Description' value={description} onChange={(e) => setDescription(e.target.value)}/>
+          <TextField margin='dense' variant='outlined' size='small' label='Title' fullWidth
+                     value={title} onChange={(e) => setTitle(e.target.value)}
+          />
+
+          <TextField margin='dense' variant='outlined' size='small' label='Description' fullWidth multiline rows={3}
+                     value={description} onChange={(e) => setDescription(e.target.value)}
+          />
 
           <FormControl margin='dense' fullWidth>
             <InputLabel>Category</InputLabel>
-            <Select id='select-category' variant='outlined' size='small' label='Category' value={category} onChange={(e) => setCategory(e.target.value)}>
+            <Select id='select-category' variant='outlined' size='small' label='Category'
+                    value={category} onChange={(e) => setCategory(e.target.value)}
+            >
               {categories.map((categoryChoice) => {
                 return (
                   <MenuItem value={categoryChoice.id} >{categoryChoice.name}</MenuItem>
@@ -62,7 +59,12 @@ function EditDialogue({ task, setSearchParams }) {
               })}
             </Select>
           </FormControl>
-          <input type="text" value={responsible} onChange={(e) => setResponsible(e.target.value)}/>
+
+          <TextField margin='dense' variant='outlined' size='small' label='Responsible Name'
+                     value={responsible.name} onChange={(e) => setResponsible(e.target.value)}
+          />
+
+
           <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
         </form>
       </DialogContent>
