@@ -48,6 +48,7 @@ function EditDialogue({ task, setSearchParams }) {
           <form  id='edit-form' onSubmit={handleEditSubmit}>
           <TextField margin='dense' variant='outlined' size='small' label='Title' fullWidth
                      value={title} onChange={(e) => setTitle(e.target.value)}
+                     error={!title.trim()}
           />
 
           <TextField margin='dense' variant='outlined' size='small' label='Description' fullWidth multiline rows={3}
@@ -57,14 +58,16 @@ function EditDialogue({ task, setSearchParams }) {
           <Box className='responsible-inputs-container'>
             <TextField margin='dense' variant='outlined' size='small' label='Responsible Name'
                        value={responsibleName} onChange={(e) => setResponsibleName(e.target.value)}
+                       error={!responsibleName}
             />
             <TextField margin='dense' variant='outlined' size='small' label='Responsible ID' type='number'
                        value={responsibleId} onChange={(e) => setResponsibleId(Number(e.target.value))}
+                       error={!responsibleId}
             />
           </Box>
 
           <Box className='form-row-container'>
-            <FormControl margin='dense'>
+            <FormControl margin='dense' error={!category}>
               <InputLabel>Category</InputLabel>
               <Select id='select-category' variant='outlined' size='small' label='Category'
                       value={category} onChange={(e) => setCategory(e.target.value)}
@@ -78,12 +81,12 @@ function EditDialogue({ task, setSearchParams }) {
             </FormControl>
 
             <DatePicker
-              label="Start Date" format='DD/MM/YYYY' slotProps={{ textField: { margin: 'dense', variant: 'outlined', size: 'small' } }}
+              label="Start Date" format='DD/MM/YYYY' slotProps={{ textField: { margin: 'dense', variant: 'outlined', size: 'small', error: !startDate } }}
               value={dayjs(startDate, 'DD/MM/YYYY')} onChange={(newDate) => setStartDate(newDate ? newDate.format('DD/MM/YYYY') : '')}
             />
 
             <DatePicker
-              label="End Date" format='DD/MM/YYYY' slotProps={{ textField: { margin: 'dense', variant: 'outlined', size: 'small' } }}
+              label="End Date" format='DD/MM/YYYY' slotProps={{ textField: { margin: 'dense', variant: 'outlined', size: 'small', error: !endDate } }}
               value={dayjs(endDate, 'DD/MM/YYYY')} onChange={(newDate) => setEndDate(newDate ? newDate.format('DD/MM/YYYY') : '')}
             />
           </Box>
