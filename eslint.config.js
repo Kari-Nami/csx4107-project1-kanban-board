@@ -18,4 +18,11 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  {
+    // context files export hooks next to providers on purpose
+    files: ['src/context/**'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])

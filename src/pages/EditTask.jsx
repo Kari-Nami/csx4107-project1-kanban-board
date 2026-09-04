@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import { useState } from 'react';
 import '../styles/pages/EditTask.css'
 import {useParams} from "react-router-dom";
 import {useTasks} from "../context/TaskContext.jsx";
@@ -7,14 +7,11 @@ import Navbar from "../components/Navbar.jsx";
 function EditTask() {
 
   const {id} = useParams()
-  const { tasks, editTask } = useTasks()
+  const { tasks } = useTasks()
   const task = tasks.find((task) => task.id === Number(id))
 
   const [title, setTitle] = useState(task.title)
   const [description, setDescription] = useState(task.description)
-  const [category, setCategory] = useState(task.category)
-  const [endDate, setEndDate] = useState(task.endDate)
-  const [responsible, setResponsible] = useState(task.responsible)
 
   return (
     <div className='page-container'>

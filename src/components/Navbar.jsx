@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/App.css'
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from 'react-router-dom'

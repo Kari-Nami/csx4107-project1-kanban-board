@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import { useState } from 'react';
 import '../styles/pages/KanbanBoard.css'
 import Navbar from "../components/Navbar.jsx";
 import Task from "../components/task.jsx";
@@ -9,7 +9,7 @@ import EditDialogue from "../components/EditDialogue.jsx";
 import CreateTaskDialogue from "../components/CreateTaskDialogue.jsx";
 
 function KanbanBoard() {
-  const { tasks, addTask, moveTask, editTask } = useTasks()
+  const { tasks, moveTask } = useTasks()
 
   const [createTaskOpen, setCreateTaskOpen] = useState(false)
   const [searchParams, setSearchParams] = useSearchParams()
