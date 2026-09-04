@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import { useState } from 'react';
 import { Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel, MenuItem, Select, TextField, Box } from "@mui/material";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -9,11 +9,12 @@ import {useCategories} from "../context/CategoryContext.jsx";
 
 function CreateTaskDialogue({ createTaskOpen, setCreateTaskOpen }) {
   const { addTask } = useTasks()
-  const { categories } = useCategories()
+  const { categories, addCategory } = useCategories()
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
+  const [newCategoryName, setNewCategoryName] = useState('')
   const [responsibleName, setResponsibleName] = useState('')
   const [responsibleId, setResponsibleId] = useState('')
   const [startDate, setStartDate] = useState('')
@@ -25,10 +26,19 @@ function CreateTaskDialogue({ createTaskOpen, setCreateTaskOpen }) {
       return
     }
 
+    if (category === 'new' && !newCategoryName.trim()) {
+      return
+    }
+
+    // when "new category" is picked, create it first and use it for this task
+    const chosenCategory = category === 'new'
+      ? addCategory(newCategoryName.trim())
+      : categories.find((categoryChoice) => categoryChoice.id === category)
+
     addTask(
       title,
       description,
-      categories.find((categoryChoice) => categoryChoice.id === category),
+      chosenCategory,
       startDate,
       endDate,
       { id: responsibleId, name: responsibleName }
@@ -37,6 +47,7 @@ function CreateTaskDialogue({ createTaskOpen, setCreateTaskOpen }) {
     setTitle('')
     setDescription('')
     setCategory('')
+    setNewCategoryName('')
     setStartDate('')
     setEndDate('')
     setResponsibleId('')
@@ -82,6 +93,7 @@ function CreateTaskDialogue({ createTaskOpen, setCreateTaskOpen }) {
                       <MenuItem value={categoryChoice.id} >{categoryChoice.name}</MenuItem>
                     )
                   })}
+                  <MenuItem value='new'>+ New category</MenuItem>
                 </Select>
               </FormControl>
 
@@ -95,6 +107,13 @@ function CreateTaskDialogue({ createTaskOpen, setCreateTaskOpen }) {
                 value={dayjs(endDate, 'DD/MM/YYYY')} onChange={(newDate) => setEndDate(newDate ? newDate.format('DD/MM/YYYY') : '')}
               />
             </Box>
+
+            {category === 'new' && (
+              <TextField margin='dense' variant='outlined' size='small' label='New Category Name' fullWidth
+                         value={newCategoryName} onChange={(e) => setNewCategoryName(e.target.value)}
+                         error={!newCategoryName.trim()}
+              />
+            )}
           </form>
         </DialogContent>
 

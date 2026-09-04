@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import { useState } from 'react';
 import { Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel, MenuItem, Select, TextField, Box } from "@mui/material";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -9,17 +9,25 @@ import {useCategories} from "../context/CategoryContext.jsx";
 
 function EditDialogue({ task, setSearchParams }) {
   const { editTask } = useTasks()
-  const { categories } = useCategories()
+  const { categories, addCategory } = useCategories()
 
   const [title, setTitle] = useState(task.title)
   const [description, setDescription] = useState(task.description)
   const [category, setCategory] = useState(task.category.id)
+  const [newCategoryName, setNewCategoryName] = useState('')
   const [responsibleName, setResponsibleName] = useState(task.responsible.name)
   const [responsibleId, setResponsibleId] = useState(task.responsible.id)
   const [startDate, setStartDate] = useState(task.startDate)
   const [endDate, setEndDate] = useState(task.endDate)
 
   const handleEditSubmit = () => {
+
+    // when "new category" is picked, create it first and use it for this task
+    let chosenCategory = categories.find((categoryChoice) => categoryChoice.id === category)
+
+    if (category === 'new') {
+      chosenCategory = newCategoryName.trim() ? addCategory(newCategoryName.trim()) : task.category
+    }
 
     const newTask = {
       id: task.id,
@@ -29,7 +37,7 @@ function EditDialogue({ task, setSearchParams }) {
         name: responsibleName
       },
       description: description,
-      category: categories.find((categoryChoice) => categoryChoice.id === category),
+      category: chosenCategory,
       startDate: startDate,
       endDate: endDate,
       completeDate: task.completeDate,
@@ -77,6 +85,7 @@ function EditDialogue({ task, setSearchParams }) {
                     <MenuItem value={categoryChoice.id} >{categoryChoice.name}</MenuItem>
                   )
                 })}
+                <MenuItem value='new'>+ New category</MenuItem>
               </Select>
             </FormControl>
 
@@ -90,6 +99,12 @@ function EditDialogue({ task, setSearchParams }) {
               value={dayjs(endDate, 'DD/MM/YYYY')} onChange={(newDate) => setEndDate(newDate ? newDate.format('DD/MM/YYYY') : '')}
             />
           </Box>
+
+          {category === 'new' && (
+            <TextField margin='dense' variant='outlined' size='small' label='New Category Name' fullWidth
+                       value={newCategoryName} onChange={(e) => setNewCategoryName(e.target.value)}
+            />
+          )}
         </form>
       </DialogContent>
 
