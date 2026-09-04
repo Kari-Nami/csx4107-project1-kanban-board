@@ -8,6 +8,15 @@
     --task-bg-colour: #fafafa;
     --border-colour: #c0c0c0;
     --hover-colour: #f0f0f0;
+
+    /* Chart colours (dashboard) - change these to re-theme the charts */
+    --chart-todo: #c98500;
+    --chart-doing: #2a44e8;
+    --chart-done: #2e7d32;
+    --chart-bar: #2a44e8;
+    --chart-early: #2e7d32;
+    --chart-ontime: #9d9d9d;
+    --chart-late: #b71c1c;
     
     /* Typography */
     --font-family: sans-serif;
