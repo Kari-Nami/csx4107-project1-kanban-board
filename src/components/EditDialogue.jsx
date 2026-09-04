@@ -12,7 +12,23 @@ function EditDialogue({ task, setSearchParams }) {
   const [endDate, setEndDate] = useState(task.endDate)
 
   const handleEditSubmit = () => {
-    console.log('final title:' + title.current)
+
+    const newTask = {
+      id: task.id,
+      title: title,
+      responsible: {
+        id: 45678,
+        name: "Crow"
+      },
+      description: description,
+      category: category,
+      startDate: task.startDate,
+      endDate: endDate,
+      completeDate: task.completeDate,
+      status: task.status
+    }
+
+    editTask(newTask)
     setSearchParams({})
   }
 
