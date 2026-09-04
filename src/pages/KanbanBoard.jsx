@@ -84,8 +84,8 @@ function KanbanBoard() {
           })}
         </div>
       </div>
-      
-      <button onClick={() => setCreateTaskOpen(true)}>Add task</button>
+
+      <button className='primary-button' onClick={() => setCreateTaskOpen(true)}>Add task</button>
     </div>
   );
 }

@@ -8,12 +8,12 @@ const TASKS_STORAGE_KEY = "tasks"
 const defaultTasks = [
   {
     id: 1,
-    title: "test1",
+    title: "Sample Task 1",
     responsible: {
       id: 12345,
       name: "Kate"
     },
-    description: "this is a test task",
+    description: "This is a sample task located in the TO DO column",
     category: {id: 1, name: "food"},
     startDate: "01/09/2026",
     endDate: "03/09/2026",
@@ -22,12 +22,12 @@ const defaultTasks = [
   },
   {
     id: 2,
-    title: "test2",
+    title: "Sample Task 2",
     responsible: {
       id: 45678,
       name: "Crow"
     },
-    description: "this is a test task",
+    description: "This is another sample task located in the DOING column",
     category: {id: 2, name: "class"},
     startDate: "02/09/2026",
     endDate: "07/09/2026",
